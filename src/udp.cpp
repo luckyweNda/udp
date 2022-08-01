@@ -37,11 +37,12 @@ void client::send(const unsigned char* array, size_t length)
     socket_.send_to(net::buffer(array, length), *results_type_);
 }
 
-void client::receive(unsigned char* p, size_t length)
+void client::receive(unsigned char* p, size_t length, size_t& bytes_recvd)
 {
     socket_.async_receive(net::buffer(p, length), 
-        [this](boost::system::error_code error, std::size_t bytes_recvd){
+        [this, &bytes_recvd](boost::system::error_code error, std::size_t length){
             if(error) std::cout << error.message() << std::endl;
+            else bytes_recvd = length;
         }
     );
 

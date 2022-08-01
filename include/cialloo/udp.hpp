@@ -44,10 +44,11 @@ public:
     /**
      * sync receive from socket
      * 
-     * @param p         an unsigned char address to store result
-     * @param length    max size of the address
+     * @param p             an unsigned char address to store result
+     * @param length        max size of the address
+     * @param bytes_recvd   store length of receive bytes
      */
-    void receive(unsigned char* p, size_t length);
+    void receive(unsigned char* p, size_t length, size_t& bytes_recvd);
 };
 
 
