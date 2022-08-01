@@ -25,9 +25,28 @@ public:
     client(const client&) = delete;
     client operator=(const client&) = delete;
 
+    /**
+     * sync receive after this time will break
+     * 
+     * @param time      time you want to wait for the receive
+     */
     void set_timeout(uint32_t time);
+
+    /**
+     * send a message to target host
+     * 
+     * @param array     the message you want to send
+     * @param length    message length
+     */
     void send(unsigned char* array, size_t length);
     void send(const unsigned char* array, size_t length);
+
+    /**
+     * sync receive from socket
+     * 
+     * @param p         an unsigned char address to store result
+     * @param length    max size of the address
+     */
     void receive(unsigned char* p, size_t length);
 };
 
